@@ -22,7 +22,6 @@ namespace Business.Concrete
             _receiverDal = receiverDal;
         }
 
-        [CacheRemoveAspect("IReceiverService.Get")]
         [ValidationAspect(typeof(ReceiverValidator))]
         public IResult Add(Receiver receiver)
         {
@@ -35,7 +34,6 @@ namespace Business.Concrete
             return new ErrorResult("Personele kıyafet teslim edilmiş. Başka kıyafet verilemez.");
         }
 
-        [CacheRemoveAspect("IReceiverService.Get")]
         [ValidationAspect(typeof(ReceiverValidator))]
         public IResult Delete(Receiver receiver)
         {
@@ -43,13 +41,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ReceiverDeleted);
         }
 
-        [CacheAspect]
         public IDataResult<List<Receiver>> GetAll()
         {
             return new SuccessDataResult<List<Receiver>>(_receiverDal.GetAll());
         }
 
-        [CacheAspect]
         public IDataResult<Receiver> GetById(int Id)
         {
             return new SuccessDataResult<Receiver>(_receiverDal.Get(r => r.Id == Id));
@@ -61,7 +57,18 @@ namespace Business.Concrete
             return new SuccessDataResult<Receiver>(_receiverDal.Get(p => p.NameSurname == nameSurname));
         }
 
-        [CacheRemoveAspect("IReceiverService.Get")]
+        public IDataResult<Receiver> GetByCardNumber(string cardNumber)
+        {
+
+            return new SuccessDataResult<Receiver>(_receiverDal.Get(p => p.CardNumber== cardNumber));
+        }
+
+        public IDataResult<Receiver> GetByClothe(string clothe)
+        {
+
+            return new SuccessDataResult<Receiver>(_receiverDal.Get(p => p.Clothe == clothe));
+        }
+
         [ValidationAspect(typeof(ReceiverValidator))]
         public IResult Update(Receiver receiver)
         {

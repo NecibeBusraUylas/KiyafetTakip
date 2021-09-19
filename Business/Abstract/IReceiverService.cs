@@ -13,6 +13,8 @@ namespace Business.Abstract
         IDataResult<List<Receiver>> GetAll();
         IDataResult<Receiver> GetById(int Id);
         IDataResult<Receiver> GetByNameSurname(string nameSurname);
+        IDataResult<Receiver> GetByCardNumber(string cardNumber);
+        IDataResult<Receiver> GetByClothe(string clothe);
         IResult Add(Receiver receiver);
         IResult Update(Receiver receiver);
         IResult Delete(Receiver receiver);

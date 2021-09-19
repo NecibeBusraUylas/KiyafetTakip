@@ -1,7 +1,9 @@
 ﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Entities.Concrete
 {
@@ -19,6 +21,8 @@ namespace Entities.Concrete
 
         public string Department { get; set; }
 
-        public Boolean IsActive { get; set; }
+        public int IsActive { get; set; }
+
+        public int IsAdded{ get; set; }
     }
 }

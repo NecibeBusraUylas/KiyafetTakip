@@ -13,6 +13,7 @@ namespace Business.Abstract
         IDataResult<List<Staff>> GetAll();
         IDataResult<Staff> GetById(int Id);
         IDataResult<Staff> GetByNameSurname(string nameSurname);
+        IDataResult<Staff> GetByCardNumber(string cardNumber);
         IResult Add(Staff Staff);
         IResult Update(Staff Staff);
         IResult Delete(Staff Staff);

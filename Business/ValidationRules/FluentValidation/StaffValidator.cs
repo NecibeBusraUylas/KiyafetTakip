@@ -13,6 +13,9 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.EmployeeNumber).NotEmpty();
             RuleFor(p => p.NameSurname).NotEmpty();
             RuleFor(p => p.CardNumber).NotEmpty();
+            RuleFor(p => p.Division).NotEmpty();
+            RuleFor(p => p.Department).NotEmpty();
+            RuleFor(p => p.IsActive).NotEmpty();
         }
     }
 }

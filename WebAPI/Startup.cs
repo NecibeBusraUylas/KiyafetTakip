@@ -49,6 +49,14 @@ namespace WebAPI
             });
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowOrigin",
+            //       //builder => builder.WithOrigins("http://localhost:4200"));
+            //       builder => builder.WithOrigins("http://10.201.128.101:8080").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+            //});
+            //var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -93,6 +101,7 @@ namespace WebAPI
             app.ConfigureCustomExceptionMiddleware();
 
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+            // app.UseCors(builder => builder.WithOrigins("http://10.201.128.101:8080").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
             app.UseHttpsRedirection();
 

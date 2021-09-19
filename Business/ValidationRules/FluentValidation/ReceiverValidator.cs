@@ -16,6 +16,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.Department).NotEmpty();
             RuleFor(p => p.Division).NotEmpty();
             RuleFor(p => p.Clothe).NotEmpty();
+            RuleFor(p => p.Time).NotEmpty();
         }
     }
 }

@@ -23,7 +23,6 @@ namespace Business.Concrete
             _staffDal = staffDal;
         }
 
-        [CacheRemoveAspect("IStaffService.Get")]
         [ValidationAspect(typeof(StaffValidator))]
         public IResult Add(Staff staff)
         {
@@ -32,7 +31,6 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
-        [CacheRemoveAspect("IStaffService.Get")]
         [ValidationAspect(typeof(StaffValidator))]
         public IResult Delete(Staff staff)
         {
@@ -40,20 +38,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.StaffDeleted);
         }
 
-        [CacheAspect]
         public IDataResult<List<Staff>> GetAll()
         {
             return new SuccessDataResult<List<Staff>>(_staffDal.GetAll());
         }
 
-        [CacheAspect]
         public IDataResult<Staff> GetById(int Id)
         {
             return new SuccessDataResult<Staff>(_staffDal.Get(p => p.Id == Id));
         }
 
         [SecuredOperation("admin")]
-        [CacheRemoveAspect("IStaffService.Get")]
         [ValidationAspect(typeof(StaffValidator))]
         public IResult Update(Staff staff)
         {
@@ -61,10 +56,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.StaffUpdated);
         }
 
-        [CacheAspect]
         public IDataResult<Staff> GetByNameSurname(string nameSurname)
         {
             return new SuccessDataResult<Staff>(_staffDal.Get(p => p.NameSurname== nameSurname));
+        }
+
+        public IDataResult<Staff> GetByCardNumber(string cardNumber)
+        {
+            return new SuccessDataResult<Staff>(_staffDal.Get(p => p.CardNumber == cardNumber));
         }
     }
 }
