@@ -1,4 +1,4 @@
-# Utarit Clothe Tracking System 
+#  Clothe Tracking System 
 
 The project is a multi-layered project based on SOLID principles. This project is the backend side of KiyafetTakip project in my repositories. You can check the frontend project here => [KiyafetTakip-Frontend](https://github.com/NecibeBusraUylas/KiyafetTakip-Frontend)
 
